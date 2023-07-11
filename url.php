@@ -118,7 +118,7 @@ echo '<button class="btn btn-primary" data-clipboard-text="' . $shortUrl . '" on
     </button>';
 ?>
         <button class="btn btn-primary" onclick="history.go(-1);">
-            <i class="fas fa-arrow-left"></i> Geri Dön
+            <i class="fas fa-arrow-left"></i> Turn back
         </button>
         <div id="balloon" style="display: none;">URL Copied</div>
     </div>
