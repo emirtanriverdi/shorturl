@@ -23,7 +23,6 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">URL Shortened</h1>
         <?php
 function is_valid_domain_name($domain_name)
 {
@@ -48,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($url === '') {
+    echo '<h1 class="mt-5">Fail!</h1>';
     echo '<p style="color: red;">Error: URL required!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
         <i class="fas fa-arrow-left"></i> Turn back
@@ -63,6 +63,7 @@ $folderName = generateRandomString();
 $folderPath = './' . $folderName;
 
 if (!is_valid_domain_name(parse_url($url, PHP_URL_HOST))) {
+    echo '<h1 class="mt-5">Fail!</h1>';
     echo '<p style="color: red;">Error: Invalid domain!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
         <i class="fas fa-arrow-left"></i> Turn back
@@ -71,6 +72,7 @@ if (!is_valid_domain_name(parse_url($url, PHP_URL_HOST))) {
 }
 
 if (strpos($url, '.') === false) {
+    echo '<h1 class="mt-5">Fail!</h1>';
     echo '<p style="color: red;">Error: URL is wrong!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
         <i class="fas fa-arrow-left"></i> Turn back
@@ -79,6 +81,7 @@ if (strpos($url, '.') === false) {
 }
 
 if (strlen($url) === 3) {
+    echo '<h1 class="mt-5">Fail!</h1>';
     echo '<p style="color: red;">Error: URL must be longer than 3 characters!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
         <i class="fas fa-arrow-left"></i> Turn back
@@ -109,7 +112,7 @@ fwrite($indexFile, $htmlContent);
 fclose($indexFile);
 
 $shortUrl = 'https://6.rf.gd/' . $folderName;
-
+echo '<h1 class="mt-5">URL Shortened</h1>';
 echo '<p>Shortened URL: <a href="' . $folderName . '">' . $shortUrl . '</a></p>';
 echo '<button class="btn btn-primary" data-clipboard-text="' . $shortUrl . '" onclick="copyUrl()">
         <i class="far fa-copy"></i> Copy URL
