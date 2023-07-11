@@ -1,4 +1,8 @@
 # shorturl
 PHP shorturl site project.
-Main site: https://6.rf.gd/
-There is no sql connection in the code or any piece of code that pulls user data. There is no user limit. In fact, if you are going to use this code on your own site, you can prevent the user from creating the same URL again and again with the help of sql or cookies, or you can set a daily limit.
+Main site: https://6.rf.gd/<br><br>
+There is no sql connection in the code or any piece of code that pulls user data. There is no user limit. In fact, if you are going to use this code on your own site, you can prevent the user from creating the same URL again and again with the help of sql or cookies, or you can set a daily limit.<br><br>
+The working logic of the code creates a folder with a 2-digit name from a list of 70-digit characters after the url is entered. It creates an index.html file that redirects to the URL entered in the folder.<br>
+There are "!@$^&*()" signs inside the 70-digit characters, when I installed nginx and apache on my own computer, there was no problem with the urls created with these signs, and when I tried it on an nginx-based infinityfree host. But if you have it, you may need to remove some signs, you can add some signs, but they may give an error "%#" These two signs gave me trouble.<br><br>
+There is a url validation mechanism in the code, it partially protects it. But since it's standard, even a url named example s.s can be accepted, you can add a real domain name validation for better validation, but this can cause some troubles and slowness.<br><br>
+The redirection process is done with html and by refreshing the page. Also, a text appears while redirecting, you can speed up the redirect a little more by removing the body part first, or you can redirect directly instead of redirecting by refreshing the page, or you can use php instead of html, but when I removed the refresh system, my phone was not redirected.
