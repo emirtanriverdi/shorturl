@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^url$ url.php [L]
