@@ -26,9 +26,9 @@
         <?php
 function is_valid_domain_name($domain_name)
 {
-    return (preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $domain_name) //valid chars check
-            && preg_match("/^.{1,253}$/", $domain_name) //overall length check
-            && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name)   ); //length of each label
+    return (preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $domain_name)
+            && preg_match("/^.{1,253}$/", $domain_name)
+            && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name)   );
 }
 
 function generateRandomString($length = 2) {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($url === '') {
     echo '<p style="color: red;">Error: URL required!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
-        <i class="fas fa-arrow-left"></i> Geri Dön
+        <i class="fas fa-arrow-left"></i> Turn back
     </button>';
     exit;
 }
@@ -61,29 +61,26 @@ if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
 $folderName = generateRandomString();
 $folderPath = './' . $folderName;
 
-// Domain doğrulama kontrolü
 if (!is_valid_domain_name(parse_url($url, PHP_URL_HOST))) {
     echo '<p style="color: red;">Error: Invalid domain!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
-        <i class="fas fa-arrow-left"></i> Geri Dön
+        <i class="fas fa-arrow-left"></i> Turn back
     </button>';
     exit;
 }
 
-// URL'de nokta kontrolü
 if (strpos($url, '.') === false) {
-    echo '<p style="color: red;">Error: URL must contain a dot (.)!</p>';
+    echo '<p style="color: red;">Error: URL is wrong!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
-        <i class="fas fa-arrow-left"></i> Geri Dön
+        <i class="fas fa-arrow-left"></i> Turn back
     </button>';
     exit;
 }
 
-// URL uzunluğu kontrolü
 if (strlen($url) === 3) {
     echo '<p style="color: red;">Error: URL must be longer than 3 characters!</p>';
     echo '        <button class="btn btn-primary" onclick="history.go(-1);">
-        <i class="fas fa-arrow-left"></i> Geri Dön
+        <i class="fas fa-arrow-left"></i> Turn back
     </button>';
     exit;
 }
